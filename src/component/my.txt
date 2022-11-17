@@ -1,0 +1,30 @@
+this is the movie app => just like imdb app little bit.
+we are using class base component in this application
+
+Api call ===> with https://www.themoviedb.org/ (tmdb) site we are making api call here for geting movie data
+
+
+Component =>
+  Navbar :--> two section in Navbar component 
+              1 : Movies app
+              2 : My Favouriets
+
+
+
+
+  Banner :---> Here we have 3 thing all are dynamic and rendering from tmdb api call
+              Banner image
+              Banner title
+              Banner image decription
+
+
+  MoviesList :--->
+            
+
+
+ 
+
+
+What is fragment =>  <React.fragament> is tag which allows us to wrap multiple elm into dom tree wihout adding extra eln(eg div and all) into tree
+
+npm i react-router-dom => npm package which allows us to dynamic routhing in web page. 
