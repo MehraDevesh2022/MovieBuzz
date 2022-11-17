@@ -56,12 +56,12 @@
   left: 5vw;
   font-size: 45px;
 
-  color: white;
+  color: goldenrod;
 }
 
 .banner-text {
   position: absolute;
-  color: white;
+  color: goldenrod;
   top: 55vh;
   height: 4.5rem;
   margin-left: 5vw;
