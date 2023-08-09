@@ -4,10 +4,9 @@ MovieBuzz is a simple IMDb-like app where users can discover new movies using th
 
 ## Demo
 
+<img src="./img/01.png" width="1000" height="500" />
 
-<img src="./01.png" width="1000" height="500" />
-
-<img src="./02.png" width="1000" height="500" />
+<img src="./img/01.png" width="1000" height="500" />
 
 ## Installation
 
@@ -15,7 +14,7 @@ To run MovieBuzz locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/MovieBuzz.git
+   git clone https://github.com/MehraDevesh2022/MovieBuzz.git
    cd MovieBuzz
     
     ```
