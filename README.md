@@ -6,7 +6,7 @@ MovieBuzz is a simple IMDb-like app where users can discover new movies using th
 
 <img src="./img/01.png" width="1000" height="500" />
 
-<img src="./img/01.png" width="1000" height="500" />
+<img src="./img/02.png" width="1000" height="500" />
 
 ## Installation
 
