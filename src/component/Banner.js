@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import {movies} from '../movieData'
+// import {movies} from '../movieData'
 export class Banner extends Component {
 
   constructor(){

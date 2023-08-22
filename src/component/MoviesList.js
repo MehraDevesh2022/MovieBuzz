@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { movies } from "../movieData";
+// import { movies } from "../movieData";
 import axios from "axios";
-import { json } from "react-router-dom";
+// import { json } from "react-router-dom"; 
 export class MoviesList extends Component {
 
   constructor(){
@@ -57,8 +57,8 @@ export class MoviesList extends Component {
   }
 
   // vice versa of handle next
-  handlePreviousPage = ()=>{
-    if(this.state.currPage !=1){
+  handlePreviousPage = ()=>{ 
+    if(this.state.currPage !==1){
       this.setState({
         currPage: this.state.currPage-1
       }, this.changeMovies) // this is how the function calling for fetching data after handlePreviousPage states are change
@@ -66,7 +66,7 @@ export class MoviesList extends Component {
   }
 // when we are clicking number of page then we will render on that page
   handleValuePage =(pageValue)=>{
-    if(pageValue != this.state.currPage){
+    if(pageValue !== this.state.currPage){
       this.setState({
         currPage : pageValue
       }, this.changeMovies) // calling changeMovies function after chaining state of currPage value with selected number 
@@ -77,7 +77,7 @@ export class MoviesList extends Component {
   handleAddToFavourite = (movieArrObj) =>{
     let oldData = JSON.parse(localStorage.getItem("movie-app") || '[]');
     if(this.state.favourites.includes(movieArrObj.id)){
-            oldData = oldData.filter((favMovieId) => favMovieId.id !=movieArrObj.id) 
+            oldData = oldData.filter((favMovieId) => favMovieId.id !==movieArrObj.id) 
    }else{
       oldData.push(movieArrObj); 
    }
@@ -112,25 +112,36 @@ export class MoviesList extends Component {
               <div
                 className="card movie-card"
                 // onMouseEnter and onMouseDown both are same like doms mouseOver and mouseDown
-                onMouseEnter={() => this.setState({ hover: arrayElm.id }) } 
-                onMouseLeave= {() => this.setState({hover : ''})}
+                onMouseEnter={() => this.setState({ hover: arrayElm.id })}
+                onMouseLeave={() => this.setState({ hover: "" })}
               >
                 <img
-                // completeing the path for   diffrent movie  image using backdrop_path using movie obj  
+                  // completeing the path for   diffrent movie  image using backdrop_path using movie obj
                   src={`https://image.tmdb.org/t/p/original${arrayElm.backdrop_path}`}
                   style={{ height: "40vh", width: "20vw" }}
                   className="card-img-top movie-img"
                   alt="movies"
                 />
-                    {/* movie title from movie array obj   */}
-                <h5 className="card-title movie-title">{arrayElm.title}</h5> 
-                
-             <div className="button-wrapper " style={{ display: "flex", justifyContent: "center" }}>
-                     {/* if hover and movie id is equal then show fav button on the movie card */}
-                   {this.state.hover == arrayElm.id && (
+                {/* movie title from movie array obj   */}
+                <h5 className="card-title movie-title">{arrayElm.title}</h5>
+                <div
+                  className="button-wrapper "
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
+                  {/* if hover and movie id is equal then show fav button on the movie card */}
+                  {this.state.hover === arrayElm.id && (
                     // onMouseEnter in movie card and calling handleFavouritesState bcz initialy favourites array value is empty so if any movie already in fav list then it will show remove to list else add to favourites
-                    <a className="btn btn-primary movie-button text-center" onMouseEnter={this.handleFavouritesState}  onClick={() => this.handleAddToFavourite(arrayElm)} > {this.state.favourites.includes(arrayElm.id) ? "Remove from favourite" : "Add favourite"}</a>
-                  )}
+                    <button
+                      className="btn btn-primary movie-button text-center"
+                      onMouseEnter={this.handleFavouritesState}
+                      onClick={() => this.handleAddToFavourite(arrayElm)}
+                    >
+                      {" "}
+                      {this.state.favourites.includes(arrayElm.id)
+                        ? "Remove from favourite"
+                        : "Add favourite"}
+                    </button>
+                  )}{" "}
                 </div>
               </div>
             );
@@ -142,22 +153,23 @@ export class MoviesList extends Component {
           <nav aria-label="Page navigation example">
             <ul class="pagination">
               <li class="page-item">
-                <a class="page-link" onClick={this.handlePreviousPage}>
+                
+                <span class="page-link"  onClick={this.handlePreviousPage}>
                   Previous
-                </a>
+                </span>
               </li>
 
                {this.state.pageArr.map((pageVal) => {
                  return (<li class="page-item">
-                   <a class="page-link" onClick={()=>this.handleValuePage(pageVal)}>
+                   <span class="page-link" onClick={()=>this.handleValuePage(pageVal)}>
                      {pageVal}
-                   </a>
+                   </span>
                  </li>)
   })}
               <li class="page-item">
-                <a class="page-link" onClick={this.handleNextPage}>
+                <span class="page-link" onClick={this.handleNextPage}>
                   Next
-                </a>
+                </span>
               </li>
             </ul>
           </nav>

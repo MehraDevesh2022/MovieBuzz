@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { movies } from "../movieData";
+// import { movies } from "../movieData";
 export class Favourite extends Component {
    
     constructor(){
@@ -31,15 +31,15 @@ export class Favourite extends Component {
       let oldStorageData = JSON.parse(localStorage.getItem('movie-app') || []);
        // this is for genre type section
        let tempArr = [];
-       oldStorageData.map((movieObj) => {
-       genreIdObj.genres.map((genreName) => {
+       oldStorageData.forEach((movieObj) => {
+       genreIdObj.genres.forEach((genreName) => {
         //  agar genre name pehle se tempArr main hai to return ho jao
                if (genreName.id === movieObj.genre_ids[0]) {
                    if (tempArr.includes(genreName.name)) {
-                       return
+                       return tempArr;
                    }
                    else {
-                       tempArr.push(genreName.name);
+                        tempArr.push(genreName.name);
                    }
                }
            })
@@ -55,7 +55,7 @@ export class Favourite extends Component {
 // delete button working =>
     handelDanzerZone = (movie) => {
      let tempData = this.state.favMovieArr.filter((myObj) => {
-            return myObj.id != movie.id
+            return myObj.id !== movie.id
         })
         localStorage.setItem('movie-app', JSON.stringify(tempData))
         this.setState({
@@ -129,7 +129,7 @@ export class Favourite extends Component {
          let filterArr =[]
       
          // search baar area has no value then show all movie 
-        if(this.state.currText ==''){
+        if(this.state.currText ===''){
             filterArr = this.state.favMovieArr
         }else{
             // if searching movie with there name then show them as per input text value
@@ -144,10 +144,10 @@ export class Favourite extends Component {
         
         // when user selecting specific genre movie then show only those movie using genre id compare with genre obj and local storage movie collection
          if (this.state.currGenre !== 'All genre'){
-               genreIdObj.genres.map((genre)=>{
+               genreIdObj.genres.forEach((genre)=>{
                 if(genre.name === this.state.currGenre){
                     filterArr = this.state.favMovieArr.filter((movie) =>{
-                        return movie.genre_ids[0] == genre.id
+                        return movie.genre_ids[0] === genre.id
                     })
                 }
                })
@@ -200,13 +200,14 @@ export class Favourite extends Component {
                                                 <td >
                                                     <img 
                                                     style={{ width: "6rem" }} 
+                                                    alt="movie-poster"
                                                     src={`https://image.tmdb.org/t/p/original${movieObj.backdrop_path}`} />
-                                                    
+                                                     
                                                     </td>
                                                 <th scope="row">{movieObj.title}</th>
                                                 {/* this is for genre from genreIdObj */}
                                                
-                                                {genreIdObj.genres.map((genreNameArr) => {
+                                                {genreIdObj.genres.forEach((genreNameArr) => {
                                                     if (genreNameArr.id === movieObj.genre_ids[0]) {
                                                         return (<td>{genreNameArr.name}</td>)
                                                     }
